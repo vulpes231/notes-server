@@ -11,6 +11,9 @@ const app = express();
 
 // routers
 const rootRoute = require("./routes/root");
+const userRegisterRoute = require("./routes/register");
+const userProfileRoute = require("./routes/user");
+const { verifyJWT } = require("./middlewares/verifyJWT");
 
 app.use(reqLogger);
 connectDB();
@@ -23,10 +26,18 @@ app.use(cookieParser());
 
 // apis
 app.use("/", rootRoute);
+app.use("/register", userRegisterRoute);
+
+app.use(verifyJWT);
+app.use("/user", userProfileRoute);
 
 app.use(errorLogger);
 app.use((err, req, res, next) => {
-	res.status(500).send("Something broke!");
+	console.log(err.message);
+	res.status(500).json({
+		message: err.message || "Something went wrong",
+		...(process.env.NODE_ENV === "development" && { stack: err.stack }),
+	});
 });
 
 mongoose.connection.once("connected", () => {

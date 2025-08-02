@@ -13,7 +13,7 @@ const reqLogger = (req, res, next) => {
 };
 
 const errorLogger = (err, req, res, next) => {
-	logEvent(`${err.message}\t${err.stack}${err.name}`, "err.txt");
+	logEvent(`${err.message}\t${err.stack}${err.name}\n`, "err.txt");
 	next(err);
 };
 
