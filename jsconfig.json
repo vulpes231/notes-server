@@ -1,9 +1,9 @@
 {
 	"compilerOptions": {
 		"lib": ["ESNext"],
-		"module": "CommonJS", // Changed from "esnext"
+		"module": "CommonJS",
 		"target": "esnext",
-		"moduleResolution": "node", // Changed from "bundler"
+		"moduleResolution": "node",
 		"allowImportingTsExtensions": true,
 		"noEmit": true,
 		"composite": true,
