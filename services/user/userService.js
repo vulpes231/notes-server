@@ -14,7 +14,7 @@ async function getUserDetails(userId) {
 }
 
 async function updateUserDetails(userData) {
-	const { username, userId, email } = userData;
+	const { username, email, firstname, lastname, userId } = userData;
 	try {
 		const user = await User.findById(userId);
 		if (!user) {
@@ -22,6 +22,12 @@ async function updateUserDetails(userData) {
 		}
 		if (username) {
 			user.username = username;
+		}
+		if (firstname) {
+			user.firstname = firstname;
+		}
+		if (lastname) {
+			user.lastname = lastname;
 		}
 		if (email) {
 			user.email = email;
