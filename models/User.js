@@ -24,6 +24,10 @@ const userSchema = new Schema(
 		lastname: {
 			type: String,
 		},
+		refreshToken: {
+			type: String,
+			default: null,
+		},
 		isMailVerified: {
 			type: Boolean,
 			default: false,
