@@ -2,11 +2,12 @@ const { authUser } = require("../services/auth/loginService");
 
 const loginUser = async (req, res) => {
 	const { username, password } = req.body;
+
 	if (!username || !password)
 		return res.status(400).json({ message: "Username and password required!" });
 	try {
-		const { username, password } = userData;
-		const { accessToken, refreshToken } = authUser(userData);
+		const userData = { username, password };
+		const { accessToken, refreshToken } = await authUser(userData);
 
 		res.cookie("jwt", refreshToken, {
 			httpsOnly: true,

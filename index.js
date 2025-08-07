@@ -13,6 +13,7 @@ const app = express();
 // routers
 const rootRoute = require("./routes/root");
 const userRegisterRoute = require("./routes/register");
+const userLoginRoute = require("./routes/login");
 const userProfileRoute = require("./routes/user");
 const noteRoute = require("./routes/note");
 
@@ -28,6 +29,7 @@ app.use(cookieParser());
 // apis
 app.use("/", rootRoute);
 app.use("/register", userRegisterRoute);
+app.use("/login", userLoginRoute);
 
 app.use(verifyJWT);
 app.use("/user", userProfileRoute);
