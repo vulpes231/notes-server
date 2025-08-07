@@ -65,4 +65,4 @@ const getCollabNotes = async (req, res) => {
 	}
 };
 
-module.exports = { getUserNotes, createNote, editNote, getCollabNotes };
+module.exports = { getUserNotes, addNote, editNote, getCollabNotes };
